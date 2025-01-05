@@ -1,0 +1,20 @@
+name: pr_swiftlint
+on:
+  pull_request:
+    branches:
+      - main
+    types: [opened, reopened, synchronize]
+
+jobs:
+  swiftlint:
+    runs-on: ubuntu-latest
+    name: Run SwiftLint
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: GitHub Action for SwiftLint
+        uses: norio-nomura/action-swiftlint@3.2.1
+        with:
+          args: --strict
